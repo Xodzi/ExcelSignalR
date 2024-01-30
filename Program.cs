@@ -14,7 +14,12 @@ builder.Services.AddCors(options =>
 });
 
 
-builder.Services.AddSignalR();// подключема сервисы SignalR
+builder.Services.AddSignalR(o =>
+{
+    o.EnableDetailedErrors = true;
+    o.MaximumReceiveMessageSize = 102400; // bytes
+}
+);// подключема сервисы SignalR
 
 var app = builder.Build();
 
